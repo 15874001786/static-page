@@ -2,18 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Document</title>
 </head>
 <body>
-  <h1></h1>
-  <script>
-    function openUrl() {
-      location.replace('weixin://dl/business/?appid=wxccbeac1896bd96b3&path=pages/home/home')
-      // location.href = "https://www.baidu.com"
-    }
-    openUrl()
-  </script>
+   <div>
+     <textarea id="textarea" rows="5" cols="30"></textarea>
+   </div>
+   <div>
+     <button id="btn">生成</button>
+     <button id="btn2">清除</button>
+   </div>
+   <div>
+     <a id="link" href=""></a>
+   </div>
 </body>
-
 </html>
+<script>
+  var textarea = document.getElementById('textarea')
+  var btn = document.getElementById('btn')
+  var btn2 = document.getElementById('btn2')
+  var link = document.getElementById('link')
+  btn.addEventListener('click', () => {
+    var value = textarea.value
+    link.setAttribute('href', value)
+    link.innerText = '点击跳转：' + value
+    textarea.setAttribute('disabled', true)
+  })
+  btn2.addEventListener('click', () => {
+    textarea.value = ""
+    link.setAttribute('href', "")
+    link.innerText = ''
+    textarea.removeAttribute('disabled')
+  })
+</script>
+<style>
+* {
+  word-break: break-all;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+}
+</style>
